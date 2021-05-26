@@ -1,3 +1,5 @@
 exports.errorHandler = require("./error");
-exports.thingHandler = require("./thing");
-exports.thingsHandler = require("./things");
+exports.playerHandler = require("./Player");
+exports.playersHandler = require("./Players");
+exports.auctionHandler = require("./Auction");
+exports.auctionsHandler = require("./Auctions");

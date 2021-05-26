@@ -1,1 +1,2 @@
-exports.thingsRouter = require("./things");
+exports.auctionsRouter = require("./auctions");
+exports.playersRouter = require("./players");

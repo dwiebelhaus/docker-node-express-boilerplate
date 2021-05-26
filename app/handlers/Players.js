@@ -1,11 +1,11 @@
 // app imports
-const { Thing } = require("../models");
+const { Player } = require("../models");
 const { APIError, parseSkipLimit } = require("../helpers");
 
 /**
- * List all the things. Query params ?skip=0&limit=1000 by default
+ * List all the Players. Query params ?skip=0&limit=1000 by default
  */
-async function readThings(request, response, next) {
+async function readPlayers(request, response, next) {
   /* pagination validation */
   let skip = parseSkipLimit(request.query.skip) || 0;
   let limit = parseSkipLimit(request.query.limit, 1000) || 1000;
@@ -16,13 +16,13 @@ async function readThings(request, response, next) {
   }
 
   try {
-    const things = await Thing.readThings({}, {}, skip, limit);
-    return response.json(things);
+    const Players = await Player.readPlayers({}, {}, skip, limit);
+    return response.json(Players);
   } catch (err) {
     return next(err);
   }
 }
 
 module.exports = {
-  readThings
+  readPlayers
 };

@@ -6,11 +6,12 @@ Promise = require("bluebird"); // eslint-disable-line
 // app imports
 const { connectToDatabase, globalResponseHeaders } = require("./config");
 const { errorHandler } = require("./handlers");
-const { thingsRouter } = require("./routers");
+const { playersRouter, auctionsRouter } = require("./routers");
 
 // global constants
 dotenv.config();
 const app = express();
+
 const {
   bodyParserHandler,
   globalErrorHandler,
@@ -29,7 +30,12 @@ app.use(bodyParserHandler); // error handling specific to body parser only
 // response headers setup; CORS
 app.use(globalResponseHeaders);
 
-app.use("/things", thingsRouter);
+app.get('/test', (req, res) => res.send({
+  ok: true,
+}));
+
+app.use("/players", playersRouter);
+app.use("/auctions", auctionsRouter);
 
 // catch-all for 404 "Not Found" errors
 app.get("*", fourOhFourHandler);
